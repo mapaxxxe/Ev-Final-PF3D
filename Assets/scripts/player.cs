@@ -7,6 +7,7 @@ using UnityEngine;
 public class player : MonoBehaviour
 {
     public float speed = 5f;
+    public bool canmove = false;
     
 
     private Rigidbody rb;
@@ -14,7 +15,12 @@ public class player : MonoBehaviour
 
     private void Start()
     {
-        rb = GetComponent<Rigidbody>();
+       
+        if(canmove == true)
+        {
+            rb = GetComponent<Rigidbody>();
+        }
+        
     }
 
     private void Update()
