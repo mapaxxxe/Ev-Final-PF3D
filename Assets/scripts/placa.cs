@@ -7,12 +7,12 @@ public class placa : MonoBehaviour
     public float detectionRadius = 5f;
     public LayerMask objectLayer;
     public string objectTag = "placa";
-    public bool isPlacaDetected = false;
     public Color grayColor = Color.gray;
     private Color originalColor;
     private Renderer playerRenderer;
-    private float detectionTimer = 0f;
-    private float detectionDuration = 10f;
+    private bool isColorChangeActive = false;
+    private float colorChangeDuration = 10f;
+    private float colorChangeTimer = 0f;
 
     private void Start()
     {
@@ -30,20 +30,21 @@ public class placa : MonoBehaviour
             {
                 if (collider.CompareTag(objectTag))
                 {
-                    isPlacaDetected = true;
-                    playerRenderer.material.color = grayColor;
-                    detectionTimer = Time.time;
+                    if (!isColorChangeActive)
+                    {
+                        isColorChangeActive = true;
+                        playerRenderer.material.color = grayColor;
+                        colorChangeTimer = Time.time;
+                    }
                     break;
                 }
             }
         }
-        else
+
+        if (isColorChangeActive && Time.time - colorChangeTimer > colorChangeDuration)
         {
-            if (isPlacaDetected && Time.time - detectionTimer > detectionDuration)
-            {
-                isPlacaDetected = false;
-                playerRenderer.material.color = originalColor;
-            }
+            isColorChangeActive = false;
+            playerRenderer.material.color = originalColor;
         }
     }
 
