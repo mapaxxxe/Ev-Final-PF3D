@@ -8,6 +8,8 @@ public class player : MonoBehaviour
 {
     public float speed = 5f;
     public bool canmove = false;
+    public float life;
+    public float actuallife;
     
 
     private Rigidbody rb;
@@ -16,6 +18,7 @@ public class player : MonoBehaviour
     private void Start()
     {
        
+        actuallife = actuallife + life;
         if(canmove == true)
         {
             rb = GetComponent<Rigidbody>();
@@ -35,7 +38,10 @@ public class player : MonoBehaviour
        
     }
 
-    
+    public void takedamege()
+    {
+        actuallife = actuallife - 1;
+    }
 }
 
 

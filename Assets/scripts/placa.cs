@@ -20,6 +20,8 @@ public class placa : MonoBehaviour
         originalColor = playerRenderer.material.color;
     }
 
+
+    
     private void Update()
     {
         Collider[] hitColliders = Physics.OverlapSphere(transform.position, detectionRadius, objectLayer);

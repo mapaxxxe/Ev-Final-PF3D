@@ -50,15 +50,20 @@ public class GameManager : Singleton<GameManager>
             FindObjectOfType<player>().canmove = true;
         }
 
-	else if (state == "Game Over")
+	else if (state == "menu")
 	{
-            // Aquí asignamos todo el funcionamiento de cuando el estado sea Game Over
+            
         }
 
-	else if (state == "Victory")
+	else if (state == "Win")
 {
-            // Aquí asignamos todo el funcionamiento de cuando el estado sea Victory
+           
         }
+        else if(state == "gameover")
+        {
+
+        }
+
     }
 
 }
